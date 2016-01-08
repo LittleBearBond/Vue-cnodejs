@@ -1,6 +1,6 @@
 "use strict"
 
-import utils from  './libs/utils'
+import utils from './libs/utils'
 
 
 /**格式化时间
@@ -11,7 +11,7 @@ exports.getLastTimeStr = (time, friendly) => {
     if (friendly) {
         return utils.MillisecondToDate(new Date() - new Date(time));
     } else {
-        return utils.fmtDate(new Date(time),'yyyy-MM-dd hh:mm');
+        return utils.fmtDate(new Date(time), 'yyyy-MM-dd hh:mm');
     }
 }
 
@@ -76,27 +76,16 @@ exports.getTabClassName = (tab, good, top) => {
     return className;
 }
 
+let titles = {
+    share: '分享',
+    ask: "问答",
+    job: "招聘",
+    good: "精华"
+};
+
 /** 获取title文字
  *  @param {string} tab Tab分类
  */
 exports.getTitleStr = tab => {
-    let str = "";
-    switch (tab) {
-        case "share":
-            str = "分享";
-            break;
-        case "ask":
-            str = "问答";
-            break;
-        case "job":
-            str = "招聘";
-            break;
-        case "good":
-            str = "精华";
-            break;
-        default:
-            str = "全部";
-            break;
-    }
-    return str;
+    return titles[tab] || '全部';
 }
